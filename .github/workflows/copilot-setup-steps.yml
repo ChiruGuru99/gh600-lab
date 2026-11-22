@@ -1,0 +1,21 @@
+name: "Copilot Setup Steps"
+
+# Runs in the Copilot cloud agent's ephemeral environment before it starts working.
+# The job MUST be named `copilot-setup-steps`. Also runs here so you can validate edits.
+on:
+  workflow_dispatch:
+  push:
+    paths: [.github/workflows/copilot-setup-steps.yml]
+  pull_request:
+    paths: [.github/workflows/copilot-setup-steps.yml]
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # least privilege
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22

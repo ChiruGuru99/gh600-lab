@@ -1,0 +1,33 @@
+name: Agent task
+description: A well-formed task for a coding agent (inputs, outputs, success criteria)
+labels: [agent-task]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: One sentence. What should exist when this is done?
+    validations: { required: true }
+  - type: textarea
+    id: inputs
+    attributes:
+      label: Inputs / context
+      description: Files, endpoints, examples the agent should use.
+    validations: { required: true }
+  - type: textarea
+    id: success
+    attributes:
+      label: Success criteria
+      description: Testable bullets. e.g. "POST /notes with {} returns 400".
+    validations: { required: true }
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints / out of scope
+      description: Paths the agent may touch, things it must not do.
+  - type: dropdown
+    id: autonomy
+    attributes:
+      label: Autonomy level (see AGENTS.md)
+      options: [L0 read-only, L1 reversible (branch + PR), L2 sensitive (propose only)]
+    validations: { required: true }
